@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-06-15}
   s.description = %q{Extension for syntax that highlights vim syntax.}
   s.email = %q{karottenreibe@gmail.com}
-  s.files = %w{HISTORY.markdown README.markdown LICENSE.txt vim-syntax.gemspec}
+  s.files = %w{HISTORY.markdown README.markdown LICENSE.txt vim-syntax.gemspec lib/vim-syntax.rb}
   s.has_rdoc = false
   s.homepage = %q{http://github.com/karottenreibe/vim-syntax}
   s.rubygems_version = %q{1.3.0}
