@@ -39,6 +39,8 @@ class VimTokenizer < Syntax::Tokenizer
         elsif not @got_command and command = scan(%r{\w+})
             @got_command =  true
             start_group(:command, command)
+        elsif @got_command and word = scan(%r{\w+})
+            start_group(:word, word)
         else
             start_group(:word, scan(%r{.}))
         end
