@@ -6,9 +6,12 @@ class VimTokenizer < Syntax::Tokenizer
     def step
         @got_command ||= false
 
-        if comment = scan(%r{"[^"]*$|^".*$})
+        if comment = scan(%r{\n".*?$}) # full line comment
+            start_group(:whitespace, "\n")
             start_group(:comment, comment)
-        elsif string = scan(%r{"[^"]*"|'[^']*'})
+        elsif comment = scan(%r{"[^"]*?$}) # end of line comment
+            start_group(:comment, comment)
+        elsif string = scan(%r{"[^"]*?"|'[^']*?'})
             start_group(:string, string)
         elsif scan(%r{(function!?) (\w+)\(\)(.*?)endfunction}m)
             start_group(:command, subgroup(1))
