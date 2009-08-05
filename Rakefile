@@ -1,26 +1,16 @@
+require 'jeweler'
 
 task :release do
     sh "vim HISTORY.markdown"
     sh "vim README.markdown"
-    sh "vim vim-syntax.gemspec"
+end
 
-    print "Enter the new version number >> "
-    version = $stdin.gets.strip
-
-    unless version =~ %r{[0-9]+\.[0-9]+\.[0-9]+}
-        puts "Aborting: Invalid version number given."
-        exit -1
-    end
-    
-    puts "Committing"
-    sh "git commit -a -m 'Releasing v#{version}'"
-    puts "Tagging"
-    sh "git tag #{version}"
-    puts "Pushing"
-    sh "git push"
-    puts "Pushing tags"
-    sh "git push --tags"
-
-    puts "Done!"
+Jeweler::Tasks.new do |gem|
+    gem.name = "vim-syntax"
+    gem.summary = gem.description = "A simple (!) extension to the syntax gem, that allows you to highlight vim syntax."
+    gem.email = "karottenreibe@gmail.com"
+    gem.homepage = "http://github.com/karottenreibe/vim-syntax"
+    gem.authors = ["Fabian Streitel"]
+    gem.add_dependency('syntax')
 end
 
