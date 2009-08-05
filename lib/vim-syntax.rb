@@ -10,7 +10,7 @@ class VimTokenizer < Syntax::Tokenizer
             start_group(:comment, comment)
         elsif string = scan(%r{"[^"]*"|'[^']*'})
             start_group(:string, string)
-        elsif scan(%r{function (\w+)\(\)(.*?)endfunction}m)
+        elsif scan(%r{function!? (\w+)\(\)(.*?)endfunction}m)
             start_group(:command, 'function')
             start_group(:functionname, subgroup(1))
             start_group(:functionbody, subgroup(2))
