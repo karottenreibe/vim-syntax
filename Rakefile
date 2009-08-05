@@ -3,7 +3,7 @@ require 'jeweler'
 task :release do
     sh "vim HISTORY.markdown"
     sh "vim README.markdown"
-    sh "git commit -a -m 'prerelease adjustments' || 1"
+    sh "git commit -a -m 'prerelease adjustments'; true"
 end
 
 Jeweler::Tasks.new do |gem|
