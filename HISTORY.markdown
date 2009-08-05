@@ -1,3 +1,11 @@
+0.0.4
+=====
+
+*   fixed some flawes with some tokens
+*   removed special function token
+*   fixed a bug with full line comments
+*   renamed __param__ token to __word__
+
 0.0.3
 =====
 

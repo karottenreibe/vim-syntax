@@ -19,3 +19,15 @@ Then:
     convertor = Syntax::Convertors::HTML.for_syntax "vim"
     puts convertor.convert( "let mapleader=','" )
 
+What are the classes of the html elements it produces?
+======================================================
+
+*   comment
+*   string
+*   key
+*   number
+*   punct
+*   command
+*   word
+*   whitespace
+
