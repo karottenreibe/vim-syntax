@@ -1,29 +1,36 @@
 
 require 'syntax'
 
+#
+# Syntax highlighting for vim script code.
+#
+# Produces the following tokens:
+# - comment
+# - string
+# - number
+# - key
+# - punct
+# - whitespace
+# - command
+# - word
+#
 class VimTokenizer < Syntax::Tokenizer
 
     def step
         @got_command ||= false
 
         if comment = scan(%r{\n".*?$}) # full line comment
-            start_group(:whitespace, "\n")
             start_group(:comment, comment)
         elsif comment = scan(%r{"[^"]*?$}) # end of line comment
             start_group(:comment, comment)
         elsif string = scan(%r{"[^"]*?"|'[^']*?'})
             start_group(:string, string)
-        elsif scan(%r{(function!?) (\w+)\(\)(.*?)endfunction}m)
-            start_group(:command, subgroup(1))
-            start_group(:functionname, subgroup(2))
-            start_group(:functionbody, subgroup(3))
-            start_group(:command, 'endfunction')
         elsif number = scan(%r{\d+})
             start_group(:number, number)
         elsif key = scan(%r{<[^<]+>})
             start_group(:key, key)
 
-        elsif punct = scan(%r{[^\w\s]})
+        elsif punct = scan(%r{[^\w\süöäß]})
             start_group(:punct, punct)
         elsif space = scan(%r{\s})
             @got_command = false if space == "\n"
@@ -33,7 +40,7 @@ class VimTokenizer < Syntax::Tokenizer
             @got_command =  true
             start_group(:command, command)
         else
-            start_group(:param, scan(%r{.}))
+            start_group(:word, scan(%r{.}))
         end
     end
 
