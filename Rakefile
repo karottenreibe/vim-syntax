@@ -1,6 +1,7 @@
 require 'jeweler'
 
 task :release do
+    sh "git commit -a; true"
     sh "vim HISTORY.markdown"
     sh "vim README.markdown"
     sh "git commit -a -m 'prerelease adjustments'; true"
