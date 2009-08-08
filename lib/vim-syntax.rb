@@ -25,7 +25,7 @@ class VimTokenizer < Syntax::Tokenizer
             start_group(:comment, comment)
         elsif string = scan(%r{"[^"]*?"|'[^']*?'})
             start_group(:string, string)
-        elsif number = scan(%r{\d+})
+        elsif number = scan(%r{\d+\b})
             start_group(:number, number)
         elsif key = scan(%r{<[^<]+>})
             start_group(:key, key)
