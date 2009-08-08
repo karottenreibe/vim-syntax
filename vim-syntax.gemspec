@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Fabian Streitel"]
-  s.date = %q{2009-08-05}
+  s.date = %q{2009-08-08}
   s.description = %q{A simple (!) extension to the syntax gem, that allows you to highlight vim syntax.}
   s.email = %q{karottenreibe@gmail.com}
   s.extra_rdoc_files = [
